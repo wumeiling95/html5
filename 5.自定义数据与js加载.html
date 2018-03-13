@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1" >div1</div>
+    <div id="div2" data-xx="aa"data-bb-aa="bb" cc="123">div2</div>
+
+    <!--<script src="require.js" data-main="index"></script>-->
+    <script>
+        var oDiv1 = document.querySelector('#div1');
+        oDiv1.xx = '123';
+        console.log(oDiv1.xx);
+
+        oDiv1.setAttribute('yy','456');
+        console.log(oDiv1.getAttribute('yy'));
+
+//        $(function () {
+//            var $div2 = $('#div2');
+//            console.log($div2.data('xx-yy'));
+//        })
+
+        var oDiv2 = document.querySelector('#div2');
+        console.log(oDiv2.dataset);
+        console.log(oDiv2.dataset.bbAa);
+
+
+    </script>
+</body>
+</html>

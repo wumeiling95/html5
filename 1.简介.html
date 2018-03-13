@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--文档类型-->
+<html lang="en">
+<head>
+    <!--.dtd 文档类型的定义-->
+    <!--字符集  UTF-8 GBK GB2312 （国标）...-->
+    <meta charset="UTF-8">
+    <meta name="keywords " content="html5,h5">
+    <meta name="description" content="这是一个html5的网站">
+    <title>Title</title>
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!--html5shiv 旧的浏览器中支持html新标签-->
+    <!--<script src="地址"></script>-->
+
+    <script>
+        document.createElement('header');
+    </script>
+    <style>
+        header{
+            background-color: #f66;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!--区块  无语义标签-->
+    <div></div>
+    <span></span>
+<!--语义标签：语义化  在合适的地方设置合适的标签,便于开发者阅读和写出更优雅的代码的同时，让爬虫和机器很好滴解析-->
+    <h1></h1>
+    <a></a>
+
+
+    <header>header</header>
+
+
+    <nav></nav>
+    <footer></footer>
+
+    <article></article>
+
+    <!--datalist用法，火狐浏览器显示不一样，也是不兼容-->
+    <input type="text" list="web">
+    <datalist id="web">
+        <option>html</option>
+        <option>css</option>
+        <option>js</option>
+    </datalist>
+
+    <!--细节东西-->
+    <details></details>
+
+    <!--图片描述,有样式-->
+    <figure></figure>
+
+    <!--获取文本框焦点-->
+    <label for="username">用户名：</label>
+    <input type="text" id="username">
+
+</body>
+</html>

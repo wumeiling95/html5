@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+    <div class="aa bb cc" id="div4">div4</div>
+
+    <script>
+        document.getElementById('div1');
+        document.getElementsByTagName('div1');
+
+//        兼容性问题
+        document.getElementsByClassName('div');
+        document.getElementsByName('div');
+
+        var oDiv1 = document.querySelector('#div1');
+        console.log(oDiv1);
+
+        var oDiv1 = document.querySelector('#div1 >div');
+        console.log(oDiv1);
+
+//        有区别 node 和 innerhtmlcollection
+        var aDiv = document.querySelectorAll('div');
+        console.log(aDiv);
+
+        var aDiv2 = document.getElementsByTagName('div');
+        console.log(aDiv2);
+
+        var oDiv4 = document.querySelector('#div4');
+        console.log(oDiv4.className);//string
+
+        var oDiv4 = document.querySelector('#div4');
+        console.log(oDiv4.classList);//数组
+
+        oDiv4.classList.add('ee');
+        oDiv4.classList.remove('bb');
+
+        oDiv4.classList.toggle('ff');
+    </script>
+</body>
+</html>
