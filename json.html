@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--json  js对象的标记  数据交换格式  -->
+    <script>
+        var obj = {
+            a:'hello',
+            b:'World'
+        };
+        var json = '{"a":"hello","b":"World"}';//json 用字符串，表示js的一个对象，前后端无法传对象
+
+        var str = JSON.stringify(obj); //把对象转换成一个字符串
+        console.log(str);
+
+        var obj2 = JSON.parse(json);  //把字符串转成一个对象
+        console.log(obj2);
+
+        var userinfo = {
+            username:'zhangsan',
+            age:'18',
+            achool:'nonggda'
+        };
+        var userstr = JSON.stringify(userinfo);
+        console.log(userstr);
+
+        //json2.js  解决兼容性问题
+
+        var a=5;
+        var b=a;
+        a=6;
+        console.log(b);
+
+
+//         var obj1 ={
+//             name:'zs',
+//             age:'18'
+//         }
+//         var obj2 = obj1; //对象存在堆里面    浅拷贝  ==》  深拷贝
+//        obj1.name = 'lisi';
+//        console.log(obj2);
+
+
+          var obj1={
+             name:"zhangsan",
+              age:18,
+              dad:{
+                 name:'zhanger',
+                  age:'45'
+              }
+          }
+//        深拷贝 深克隆
+//        var obj3 = {}; //new object()
+//        obj3.name = obj1.name;
+//        obj3.age = obj1.age;
+//        obj1.name ='lisi';//obj3另外开辟了一个地方  并不影响
+//        console.log(obj3);
+
+
+        var obj4 = clone(obj1);
+//        obj1.name = 'lisi';
+        obj1.dad.name='zhangda';
+        console.log(obj1);
+        console.log(obj4);
+
+
+        function clone(obj) {
+            var newObj = {};
+            for(var p in obj){
+                if (typeof (obj[p])=='object'){
+                    newObj[p]=clone(obj[p]);
+
+                }else{
+                    newObj[p] =obj[p];  //???
+                }
+
+            }
+            return newObj;
+        }
+
+        //json线程的方式
+        var obj1Str = JSON.stringify(obj1);
+        var obj5 = JSON.parse(obj1Str);
+        obj1.dad.name='zhang';
+        console.log(obj5);
+
+        eval("alert('123')");
+    </script>
+</body>
+</html>
+
+
+<!--//xml-->
+<!--<userinfo>-->
+    <!--<username>zhangsan</username>-->
+    <!--<age>18</age>-->
+    <!--<school>nondda</school>-->
+<!--</userinfo>-->
