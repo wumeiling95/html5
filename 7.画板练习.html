@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #draw{
+            background: #000000;
+         }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400" id="draw"></canvas>
+    <script>
+        var oDiv = document.querySelector('#draw'); /*querySelector即可以取id，又可以取class，兼容性没有selectById好*/
+        var draw = oDiv.getContext('2d');
+
+        oDiv.onmousedown = function (e) {
+            draw.beginPath();
+            draw.moveTo(e.clientX,e.clientY);
+            oDiv.onmousemove = function (e) {
+                draw.lineTo(e.clientX,e.clientY)
+                draw.strokeStyle = '#ffffff';
+                draw.stroke();
+            }
+            oDiv.onmouseup = function () {
+                oDiv.onmousemove = null;
+            }
+        }
+
+//        SVG矢量图 不失真  iconfont使用了svg
+
+    </script>
+</body>
+</html>

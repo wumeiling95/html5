@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        #box{
+            background: #000;
+            /*通过style设置宽高会失真，模糊*/
+            /*width: 1000px;*/
+            /*height: 200px;*/
+        }
+    </style>
+</head>
+<body>
+    <!--canvas是一个标签，通过js渲染-->
+    <!--而div等标签是浏览器进行渲染的-->
+
+    <!--window.onload = function(){-->
+        <!--外部文件全部加载完才会操作function内部的内容-->
+    <!--}-->
+
+
+    <canvas width="400" height="400" id="box"></canvas>
+    <script>
+        var oBox = document.querySelector("#box");
+        var context = oBox.getContext("2d");//获取2d的上下文对象
+        context.beginPath();
+        context.moveTo(10,10);    /*起点*/
+        context.lineTo(100,100);  /*终点*/
+        context.lineWidth = 10;
+        context.strokeStyle = "#ffffff";
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(210,210);
+        context.lineTo(100,100);
+        context.lineWidth = 5 ;
+        context.strokeStyle = "#ff0000";
+        context.stroke();
+
+        var x = oBox.width / 2;
+        var y = oBox.height / 2;
+        var radius = 75;
+        var startAngle = 1 * Math.PI;
+        var endAngle = 2 * Math.PI;
+        var counterClockwise = false;/*true时就是两个点调换呢，取反*/
+        context.beginPath();
+        context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+        context.lineWidth = 15;
+        // 设置线的颜色
+        context.strokeStyle = "white";
+        context.stroke();
+
+    </script>
+</body>
+</html>
