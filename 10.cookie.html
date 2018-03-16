@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+//        存储在浏览器
+        var timer =  new Date();
+        timer.setDate(timer.getDate()+10);
+        console.log(timer.toUTCString());
+        document.cookie = "school = heida;expires=";/*过期时间*/
+        console.log(document.cookie)
+
+        function setCookie(key,value,expires) {
+            var timer = new Date();
+            timer.setDate(timer.getDate()+expires);
+            var str = key +"="+value +";expires="+timer.toUTCString();
+            document.cookie = str;
+        }
+        function getCookie(key) {
+            var arr = document.cookie.split(";");
+            for(var i=0;i<arr.length;i++){
+                if(arr[i].split("=")[0].trim()==key){  //trim能把字符串前后的空格去掉
+                    return arr[i].split("=")[1];
+                }
+            }
+        }
+        function delCookie(key) {
+            var timer = new Date();
+            timer.setDate(timer.getDate()-1);
+            document.cookie = key+"=null;expires="+timer.toUTCString();
+        }
+        setCookie("school","linda",10);
+        console.log(getCookie("school"));
+        delCookie("school");
+        console.log(getCookie("school"));
+    </script>
+</body>
+</html>
