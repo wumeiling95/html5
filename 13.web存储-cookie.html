@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--cookie:不设置过期时间，被存储在内存中，生命周期随着浏览器的关闭而结束；-->
+            <!--设置过期时间，存储在硬盘中；-->
+            <!--是服务器发送给客户端的特殊信息，以文本形式存在客户端；-->
+            <!--单个保存的数据不大于4k-->
+         <!--...应用：判断用户是否登录过-->
+    <!--session：-->
+
+    <script>
+        var timer = new Date();
+        var timer1 = new Date();
+        timer1.setDate(timer1.getDate()-1);
+        timer.setDate(timer.getDate()+10);
+
+        console.log(timer);
+        console.log("expires="+timer);
+        document.cookie = "name=xioaming;expires="
+            +timer.toUTCString();
+        document.cookie = "age=18;expires="+timer.toUTCString();
+        console.log(document.cookie);   //获取cookie
+        document.cookie = "age = null;expires="
+            +timer1.toUTCString();      //删除是设置一个已经过期的时间
+
+
+        function getCookie(key) {
+            var arr = document.cookie.split(";");//可以分号空格
+            // indexOf(‘’) 用来判断是否含有字符串
+            console.log(arr);
+            for(var i= 0;i<arr.length;i++){
+                if(arr[i].split("=")[0].trim()==key){//去掉数组内各种值之间的空格
+                    return arr[i].split("=")[1];
+                }
+            }
+        }
+
+        function setCookie(key, value, expires) {
+            var timer = new Date();
+            timer.setDate(timer.getDate()+expires);
+            document.cookie = key+"="+value+";expires="
+                +timer.toUTCString();
+        }
+        setCookie('home','haerbin',5);
+        getCookie('name');
+
+        function delCookie(key) {
+            var timer = new Date();
+            timer.setDate(timer.getDate()-1);
+            document.cookie = key+"=null;expires="
+                +timer.toUTCString();
+        }
+        delCookie("home");
+    </script>
+</body>
+</html>
